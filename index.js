@@ -16,11 +16,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', function (req, res, next) {
-  return res.end(`IPN Online`);
-})
+const router = express.Router();
 
-app.use('/notifications', function (req, res, next) {
+router.get('/', function (req, res, next) {
+  return res.end(`IPN Online`);
+});
+
+router.post('/notifications', function (req, res, next) {
   if(!req.get(`HMAC`) || !req.body || !req.body.ipn_mode || req.body.ipn_mode !== `hmac` || MERCHANT_ID !== req.body.merchant) {
     return next(new Error(`Invalid request`));
   }
@@ -47,11 +49,14 @@ app.use('/notifications', function (req, res, next) {
   return next();
 });
 
+app.use(router);
+
 app.use(function (err, req, res, next) {
   console.log("Error handler", err);
-})
+  res.end("Error");
+});
 
 
 app.listen(PORT, function () {
   console.log(`IPN listening on port ${PORT}`)
-})
+});
