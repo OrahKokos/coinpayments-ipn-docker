@@ -16,6 +16,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use('/', function (req, res, next) {
+  return res.end(`IPN Online`);
+})
+
 app.use('/notifications', function (req, res, next) {
   if(!req.get(`HMAC`) || !req.body || !req.body.ipn_mode || req.body.ipn_mode !== `hmac` || MERCHANT_ID !== req.body.merchant) {
     return next(new Error(`Invalid request`));
