@@ -1,0 +1,6 @@
+version: '3'
+services:
+  ipn:
+    environment:
+      - MERCHANT_ID=
+      - IPN_SECRET=
