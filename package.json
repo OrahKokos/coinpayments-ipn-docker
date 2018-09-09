@@ -1,0 +1,24 @@
+{
+  "name": "coinpayments-ipn-docker",
+  "version": "1.0.0",
+  "description": "Simple Coinpayments IPN processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrahKokos/coinpayments-ipn-docker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OrahKokos/coinpayments-ipn-docker/issues"
+  },
+  "homepage": "https://github.com/OrahKokos/coinpayments-ipn-docker#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "coinpayments-ipn": "^1.0.0",
+    "express": "^4.16.3"
+  }
+}
