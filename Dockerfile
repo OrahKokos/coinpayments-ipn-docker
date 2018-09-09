@@ -5,6 +5,6 @@ WORKDIR /app
 COPY "package.json" .
 COPY "package-lock.json" .
 RUN npm install --production --silent
-COPY ./app .
+COPY . .
 EXPOSE 3000
 CMD node index.js
